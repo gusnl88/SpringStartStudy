@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+    <style>
+        .click{
+            font-size:50px;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+<a class="click" href="/">Main</a>
+<div class="container">
+    <h1 class="text-center my-5">유저 리스트 (mybatis)</h1>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Phone</th>
+            <th>Birth</th>
+            <th>Gender</th>
+            <th>상세</th>
+        </tr>
+        </thead>
+        <tbody>
+        <!-- Thymeleaf 반복문 사용 -->
+        <tr th:each="u:${users}">
+            <td th:text="${u.uId}"></td>
+            <td th:text="${u.name}"></td>
+            <td th:text="${u.phone}"></td>
+            <td th:text="${u.birth}"></td>
+            <td th:text="${u.gender}"></td>
+            <td>
+                <a th:href="@{'/users/detail.do'(u_id=${u.uId})}"> <!--href 는 th:를 붙이고 "@{}"를 넣어야한다-->
+                    상세
+                </a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+</div>
+<script src="/bootstrap/js/bootstrap.min.js"></script>
+</body>
+</html>

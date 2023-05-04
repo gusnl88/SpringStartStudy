@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>게시글상세페이지</title>
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+</head>
+<body>
+<h1 class="text-center my-5">게시글 상세페이지</h1>
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <h2 class="mb-3">제목 :<span th:text="${board.title}"></span> </h2>
+            <hr>
+            <p class="text-muted text-center">
+                글번호: <span th:text="${board.getBId()}"></span>
+                | 게시자:<span th:text="${board.getUId()}"></span>
+                | 게시일:<span th:text="${board.getPostTime().toLocaleString()}"></span>
+                | 수정일:<span th:text="${board.getUpdateTime().toLocaleString()}"></span>
+                | 상태:<span th:text="${board.getStatus()}"></span>
+                | 조회수:<span th:text="${board.getViewCount()}"></span>
+            </p>
+            <hr>
+            <p>내용</p>
+            <p th:text="${board.content}"></p>
+            <p class="btn-group text-end " role="group">
+                <a th:href="@{'./update.do'(b_id=${board.getBId()})}" class="btn btn-outline-primary ">수정</a>
+            </p>
+        </div>
+
+    </div>
+</div>
+<script src="/bootstrap/js/bootstrap.min.js"></script>
+</body>
+</html>

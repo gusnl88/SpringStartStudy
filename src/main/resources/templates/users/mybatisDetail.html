@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+      <style>
+            .click{
+                  font-size:50px;
+                  text-decoration: none;
+            }
+      </style>
+</head>
+<body>
+<a class="click" href="./mybatisList.do">LIST</a>
+      <h1 class="my-4">유저 상세</h1>
+      <p>아이디 : <strong th:text="${user.uId}"></strong></p>
+      <p>이름 : <strong th:text="${user.name}"></strong></p>
+      <p>가입일 : <strong th:text="${user.postTime}"></strong></p>
+      <p>프로필 : <img style="width: 200px;" src="${user.getImgPath()}>"></p>
+      <p>핸드폰: <strong th:text="${user.phone}"></strong></p>
+      <p>이메일 : <strong th:text="${user.email}"></strong></p>
+      <p>생일 : <strong th:text="${user.birth}"></strong></p>
+      <p>성별 : <strong th:text="${user.gender}"></strong></p>
+      <p>주소 : <strong th:text="${user.address}"></strong></p>
+      <p>주소상세 : <strong th:text="${user.detailAddress}"></strong></p>
+      <p>등급(상태) : <strong th:text="${user.permission}"></strong></p>
+      <p><a th:href="@{'./update.do'(u_id=${user.getUId()})}">수정폼</a></p>
+
+</body>
+<script src="/bootstrap/js/bootstrap.min.js"></script>
+</html>

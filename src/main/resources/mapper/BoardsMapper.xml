@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.acorn.springstartstudy.mapper.BoardsMapper" >
+    <resultMap id="BoardsMap" type="com.acorn.springstartstudy.dto.BoardsDto">
+        <id column="b_id" property="bId"/>
+        <result column="u_id" property="uId"/>
+        <result column="post_Time" property="postTime"/>
+        <result column="update_Time" property="updateTime"/>
+        <result column="status" property="status"/>
+        <result column="title" property="title"/>
+        <result column="content" property="content"/>
+        <result column="view_count" property="viewCount"/>
+    </resultMap>
+    <update id="updateOne" parameterType="com.acorn.springstartstudy.dto.BoardsDto">
+        UPDATE boards SET
+        status=#{status},
+        title=#{title},
+        content=#{content},
+        WHERE b_id=#{b_id}
+    </update>
+    <select id="findAll" resultMap="BoardsMap">
+        SELECT * FROM boards
+    </select>
+    <select id="findByBId" resultMap="BoardsMap">
+        SELECT * FROM boards WHERE b_id=#{bId}
+    </select>
+</mapper>

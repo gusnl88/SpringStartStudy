@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>게시글리스트</title>
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <h1 class="text-center my-5">게시글 리스트</h1>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>글번호</th>
+            <th>아이디</th>
+            <th>작성일</th>
+            <th>수정일</th>
+            <th>상태</th>
+            <th>제목</th>
+            <th>내용</th>
+            <th>조회수</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="b:${boards}">
+            <td th:text="${b.getBId()}"></td>
+            <td th:text="${b.getUId()}"></td>
+            <td th:text="${b.getPostTime().toLocaleString()}"></td>
+            <td th:text="${b.getUpdateTime().toLocaleString()}"></td>
+            <td th:text="${b.getStatus()}"></td>
+            <td th:text="${b.getTitle()}"></td>
+            <td th:text="${b.getContent()}"></td>
+            <td th:text="${b.getViewCount()}"></td>
+            <td>
+                <a style="text-decoration: none" th:href="@{'./detail.do'(b_id=${b.getBId()})}">상세</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<script src="/bootstrap/js/bootstrap.min.js"></script>
+</body>
+</html>
